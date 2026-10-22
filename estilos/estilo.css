@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --altura-header: 90px; /* IA */
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(240, 240, 243);
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  background-color: #1f2937;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 3%;
+  padding-right: 3%;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  z-index: 10;
+  height: var(--altura-header); /* IA */
+}
+
+.logo-header {
+  display: block;
+  max-height: 70px;
+}
+
+.menu-principal {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu-principal li {
+  padding: 5px;
+}
+.menu-principal li a {
+  color: aliceblue;
+  font-size: 120%;
+  text-decoration: none;
+}
+.menu-principal li a:hover {
+  color: #415165;
+}
+
+main {
+  padding-top: var(--altura-header);
+}
+
+.secao-cards {
+  scroll-margin-top: var(--altura-header);
+  padding: 0px 50px 40px 50px;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, transparent, #1f2937, transparent) 1;
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--altura-header));
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-secao {
+  font-size: 200%;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  flex: 1;
+  max-width: 350px;
+  background-color: #fff;
+  border: solid 2px #1f2937;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imagem-card {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: rgb(207, 216, 217);
+}
+
+.titulo-card {
+  padding: 10px 15px 5px 15px;
+}
+
+.texto-card {
+  padding: 5px 15px 15px 15px;
+  font-size: 110%;
+  line-height: 150%;
+}
+
+footer {
+  background-color: #1f2937;
+  padding: 20px 3%;
+  text-align: center;
+}
+
+.texto-footer {
+  color: #fff;
+  line-height: 150%;
+}
+
+@media (max-width: 900px) {
+ :root {
+    --altura-header: 125px;
+  }
+
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .menu-principal {
+    gap: 10px;
+  }
+
+  .secao-cards {
+    padding: 0px 20px 30px 20px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
