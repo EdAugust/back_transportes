@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --altura-header: 90px; /* IA */
+  --altura-imagem: clamp(180px, calc((100vh - var(--altura-header)) * 0.32), 380px);
 }
 
 * {
@@ -62,7 +63,7 @@ main {
 
 .secao-cards {
   scroll-margin-top: var(--altura-header);
-  padding: 0px 50px 40px 50px;
+  padding: 0px 50px 30px 50px;
   border-bottom: 2px solid;
   border-image: linear-gradient(to right, transparent, #1f2937, transparent) 1;
   box-sizing: border-box;
@@ -81,28 +82,137 @@ main {
   display: flex;
   justify-content: center;
   gap: 30px;
+  flex: 1;
 }
 
 .card {
   flex: 1;
-  max-width: 350px;
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border: solid 2px #1f2937;
   border-radius: 8px;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(31, 41, 55, 0.35);
+}
+
+/* Moldura da imagem: guarda as 4 fotos uma sobre a outra */
+.imagem-wrap {
+  position: relative;
+  height: var(--altura-imagem);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Fotos 2, 3 e 4 ficam empilhadas por cima da foto 1, invisíveis.
+   Quando o mouse entra no card, cada uma roda uma animação (@keyframes) que
+   a faz aparecer na sua vez. A animação recomeça do zero a cada hover. */
+.foto-extra {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.card:hover .foto-2 { animation: foto2 14s linear infinite; }
+.card:hover .foto-3 { animation: foto3 14s linear infinite; }
+.card:hover .foto-4 { animation: foto4 14s linear infinite; }
+
+/* Ciclo de 14 s: cada foto fica parada 2,5 s e leva 1 s para dar lugar à próxima.
+   Foto 1: 0 a 2,5 s | foto 2: 3,5 a 6 s | foto 3: 7 a 9,5 s | foto 4: 10,5 a 13 s
+   Entre 13 s e 14 s a foto 4 some e volta a foto 1. */
+@keyframes foto2 {
+  0%, 17.85% { opacity: 0; }
+  25%, 75%   { opacity: 1; }
+  75.01%, 100% { opacity: 0; }
+}
+
+@keyframes foto3 {
+  0%, 42.85% { opacity: 0; }
+  50%, 75%   { opacity: 1; }
+  75.01%, 100% { opacity: 0; }
+}
+
+@keyframes foto4 {
+  0%, 67.85% { opacity: 0; }
+  75%, 92.85% { opacity: 1; }
+  100%        { opacity: 0; }
 }
 
 .imagem-card {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   background-color: rgb(207, 216, 217);
+}
+
+.card > .imagem-card {
+  height: var(--altura-imagem);
+  flex-shrink: 0;
+}
+
+.card-conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(16px, 2.4vh, 26px) 30px clamp(18px, 3vh, 30px) 30px;
 }
 
 .titulo-card {
   padding: 10px 15px 5px 15px;
 }
+
+.card-conteudo .titulo-card {
+  padding: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.5rem, min(2.6vw, 3.8vh), 2.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1f2937;
+  margin-bottom: 14px;
+}
+
+.card-conteudo .titulo-card::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background-color: #1f2937;
+}
+
+.card-conteudo .texto-card {
+  padding: 0;
+  font-size: clamp(0.92rem, min(1.2vw, 2.1vh), 1.35rem);
+  line-height: 1.45;
+  color: #374151;
+  margin-bottom: 14px;
+}
+
+.botao-card {
+  margin-top: auto;
+  padding: 12px 26px;
+  border-radius: 8px;
+  background-color: #1f2937;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao-card:hover {
+  background-color: #415165;
+}
+
 
 .texto-card {
   padding: 5px 15px 15px 15px;
@@ -122,6 +232,10 @@ footer {
 }
 
 @media (max-width: 900px) {
+ .card-conteudo .texto-card {
+    font-size: 1rem;
+  }
+
  :root {
     --altura-header: 125px;
   }
@@ -146,6 +260,6 @@ footer {
 
   .card {
     width: 100%;
-    max-width: 400px;
+    max-width: 640px;
   }
 }
