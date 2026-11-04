@@ -58,16 +58,16 @@ header {
 }
 
 main {
-  padding-top: var(--altura-header);
+  padding-top: var(--altura-header); /* IA */
 }
 
 .secao-cards {
-  scroll-margin-top: var(--altura-header);
+  scroll-margin-top: var(--altura-header); /* IA */
   padding: 0px 50px 30px 50px;
   border-bottom: 2px solid;
   border-image: linear-gradient(to right, transparent, #1f2937, transparent) 1;
   box-sizing: border-box;
-  min-height: calc(100vh - var(--altura-header));
+  min-height: calc(100vh - var(--altura-header)); /* IA */
   display: flex;
   flex-direction: column;
 }
@@ -152,7 +152,7 @@ main {
   background-color: rgb(207, 216, 217);
 }
 
-.card > .imagem-card {
+.card > .imagem-card { /* IA */
   height: var(--altura-imagem);
   flex-shrink: 0;
 }
