@@ -53,7 +53,7 @@ header {
   color: #415165;
 }
 
-.secao-cards {
+.secao-principal {
   padding: 30px 50px;
   min-height: calc(100vh - 90px);
   border-bottom: 2px solid #1f2937;
@@ -61,7 +61,7 @@ header {
   flex-direction: column;
 }
 
-.titulo-secao {
+.titulo-principal {
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -104,14 +104,14 @@ header {
   margin-bottom: 15px;
 }
 
-.texto-card {
+.texto-principal {
   font-size: 1.1rem;
   line-height: 1.5;
   color: #374151;
   margin-bottom: 15px;
 }
 
-.texto-card a {
+.texto-principal a {
   color: #1f2937;
 }
 
@@ -129,10 +129,10 @@ header {
   background-color: #415165;
 }
 
-.foto {
+.imagem-principal {
   height: 40vh;
   min-height: 220px;
-  object-fit: cover; /* IA */
+  object-fit: cover;
 }
 
 .icone {
@@ -159,14 +159,13 @@ footer {
   line-height: 150%;
 }
 
-/* Sobre e Contato mais compactos para caberem na tela */
 #sobre .card-conteudo,
 #contato .card-conteudo {
   padding: 15px 25px;
 }
 
-#sobre .texto-card,
-#contato .texto-card {
+#sobre .texto-principal,
+#contato .texto-principal {
   font-size: 1rem;
   line-height: 1.4;
   margin-bottom: 10px;
@@ -201,7 +200,7 @@ footer {
     gap: 10px;
   }
 
-  .secao-cards {
+  .secao-principal {
     padding: 30px 20px;
     min-height: calc(100vh - 125px);
   }
